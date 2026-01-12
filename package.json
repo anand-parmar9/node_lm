@@ -6,13 +6,15 @@
   "type": "module",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^9.39.2",
+    "nodemon": "^3.1.11"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
     "lint": "eslint .",
     "test": "echo \"No tests yet\""
-
   },
   "author": "",
   "license": "ISC",
