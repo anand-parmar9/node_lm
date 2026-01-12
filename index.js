@@ -18,11 +18,9 @@ app.use(async (err, req, res, next) => {
     next();
 });
 
-app.use('/', (req, res, next) => {
-      console.log('Anand Singh ', Date.now())
-
-    
-});
+app.use('/', () => {
+  console.log('Anand Singh ', Date.now())
+})
 app.listen(8080, () => {
     console.log('Server is eunning on PORT 8080');
 })
