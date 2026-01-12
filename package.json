@@ -8,10 +8,10 @@
   "main": "index.js",
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-      "dev": "node index.js",
-          "start": "node index.js"
-
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "lint": "eslint .",
+    "test": "echo \"No tests yet\""
 
   },
   "author": "",

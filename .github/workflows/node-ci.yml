@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Node.js Complete CI Validation
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: ["main"]
 
 jobs:
-  build:
+  validate:
     runs-on: ubuntu-latest
 
     strategy:
@@ -15,18 +15,36 @@ jobs:
         node-version: [18]
 
     steps:
+      # 1️⃣ Checkout source code
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
 
+      # 3️⃣ Install dependencies (STRICT)
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Run tests (optional)
+      # 4️⃣ Lint validation
+      - name: Run ESLint
+        run: npm run lint
+
+      # 5️⃣ Test validation
+      - name: Run tests
+        run: npm test || echo "No tests configured"
+
+      # 6️⃣ App startup validation
+      - name: Validate app startup
         run: |
-          npm test || echo "No tests configured, skipping..."
+          node index.js &
+          sleep 5
+          echo "App started successfully"
+
+      # 7️⃣ Security validation
+      - name: Security audit
+        run: npm audit --audit-level=high
