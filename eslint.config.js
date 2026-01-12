@@ -1,15 +1,16 @@
 export default [
   {
-    files: ["**/*.js"],
+    files: ['**/*.js'],
+    ignores: ['node_modules/**'],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module"
+      ecmaVersion: 'latest',
+      sourceType: 'module'
     },
     rules: {
-      semi: "off",
-      quotes: ["error", "single"],
-      "no-unused-vars": "warn",
-      "no-console": "off"
+      semi: 'off',
+      quotes: ['error', 'single'],
+      'no-unused-vars': 'warn',
+      'no-console': 'off'
     }
   }
 ];
